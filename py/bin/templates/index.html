@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <div class="row" style="margin-top:20px">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+      <h1>Start trace</h1>
+      <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+              <button type="button" name="button">Send Trace</button>
+          </div>
+     </div>
+    </div>
+</div>
+  <div class="row" style="margin-top:20px">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+      <ul>
+        <li>{{msg}}</li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+  // A $( document ).ready() block.
+  $( document ).ready(function() {
+
+    //hang on event of form with id=myform
+    $("button").click(function(e) {
+      $.post('/', function(data, textStatus, jqXHR) {
+        $('ul').append("<li>"+data+"</li>");
+        getInit();
+      });
+    });
+  });
+
+  </script>
+{% endblock %}
